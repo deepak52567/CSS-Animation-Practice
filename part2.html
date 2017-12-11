@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transition & Keyframes</title>
+    <script src="jquery.min.js"></script>
+  </head>
+  <style>
+    body {
+      padding: 10px;
+    }
+    .box {
+      display: inline-block;
+      background: cyan;
+      position: relative;
+      border-radius: 2%;
+      height: 200px;
+      width: 200px;
+      animation: myframe 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s infinite;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+    }
+
+    .box.is-paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes myframe {
+      0% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+        background: lightgreen;
+      }
+    }
+  </style>
+  <body>
+  </body>
+  <script>
+    $('.box').on('click', function(){
+      $(this).toggleClass('is-paused');
+    });
+
+    $('html').on('click', function(){
+      $('body').append('<div class="box"></div>');
+    })
+  </script>
+</html>
